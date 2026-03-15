@@ -98,10 +98,8 @@ export default function QRScanner() {
                 message: "Erreur lors de la vérification.",
             });
         } finally {
-            // Pause scanner briefly to avoid multiple scans
-            setTimeout(() => {
-                setProcessing(false);
-            }, 2500); // 2.5 seconds pause
+            setScanning(false);
+            setProcessing(false);
         }
     };
 
@@ -167,7 +165,7 @@ export default function QRScanner() {
                         className="inline-flex items-center gap-2 py-3 px-6 border border-transparent rounded-xl shadow-sm text-sm font-medium text-zinc-900 bg-amber-400 hover:bg-amber-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-900 focus:ring-amber-500 transition-all"
                     >
                         <Scan size={18} />
-                        Démarrer la caméra
+                        {result ? "Scanner le billet suivant" : "Démarrer la caméra"}
                     </button>
                 </div>
             ) : (
